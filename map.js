@@ -149,7 +149,7 @@ const svg = d3.select('#map').select('svg');
     map.on('zoom', updatePositions);
     map.on('resize', updatePositions);
     map.on('moveend', updatePositions);
-  } catch (error) {
+ } catch (error) {
     console.error('Error loading stations or traffic:', error);
   }
 });
@@ -198,10 +198,3 @@ map.on('error', (e) => {
 //   } catch (error) {
 //     console.error('Error loading stations:', error);
 //   }
-
-
-});
-
-map.on('error', (e) => {
-  console.error('Mapbox error:', e);
-});
