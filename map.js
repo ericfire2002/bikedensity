@@ -215,7 +215,8 @@ const filteredStations = computeStationTraffic(stationInfo, filteredTrips);
         radiusScale.range([3, 50]);
       }
 
-      circles
+      svg
+        .selectAll('circle')
         .data(filteredStations, (d) => d.short_name)
         .attr('r', (d) => radiusScale(d.totalTraffic))
         .select('title')
