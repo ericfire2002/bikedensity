@@ -28,8 +28,21 @@ const bikeLaneStyle = {
 // }
 
 function getCoords(station) {
-  const lng = +(station.lon ?? station.Long);
-  const lat = +(station.lat ?? station.Lat);
+//   const lng = +(station.lon ?? station.Long);
+//   const lat = +(station.lat ?? station.Lat);
+    const lng = Number(
+    station.lon ??
+    station.Long ??
+    station.longitude ??
+    station.Longitude
+  );
+
+  const lat = Number(
+    station.lat ??
+    station.Lat ??
+    station.latitude ??
+    station.Latitude
+  );
 
   const point = new mapboxgl.LngLat(lng, lat);
   const { x, y } = map.project(point);
