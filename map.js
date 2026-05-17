@@ -39,7 +39,7 @@ map.on('load', () => {
   
   map.addSource('cambridge_route', {
     type: 'geojson',
-    data: 'https://raw.githubusercontent.com/cambridgegis/cambridgegis_data/main/Recreation/Bike_Facilities/Bike_Facilities.geojson',
+    data: 'https://raw.githubusercontent.com/cambridgegis/cambridgegis_data/main/Recreation/Bike_Facilities/RECREATION_BikeFacilities.geojson',
   });
 
   map.addLayer({
@@ -51,6 +51,6 @@ map.on('load', () => {
 
 });
 
-// map.on('error', (e) => {
-//   console.error('Mapbox error:', e);
-// });
+map.on('error', (e) => {
+  console.error('Mapbox error:', e);
+});
