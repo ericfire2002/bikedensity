@@ -205,26 +205,50 @@ let stations = computeStationTraffic(stationInfo, trips);
         .attr('cy', (d) => getCoords(d).cy);
     }
     
-function updateScatterPlot(timeFilter) {
-      const filteredTrips = filterTripsByTime(trips, timeFilter);
-    //   const filteredStations = computeStationTraffic(stations, filteredTrips);
-const filteredStations = computeStationTraffic(stationInfo, filteredTrips);
-      if (timeFilter === -1) {
-        radiusScale.range([0, 25]);
-      } else {
-        radiusScale.range([3, 50]);
-      }
+// function updateScatterPlot(timeFilter) {
+//       const filteredTrips = filterTripsByTime(trips, timeFilter);
+//     //   const filteredStations = computeStationTraffic(stations, filteredTrips);
+// const filteredStations = computeStationTraffic(stationInfo, filteredTrips);
+//       if (timeFilter === -1) {
+//         radiusScale.range([0, 25]);
+//       } else {
+//         radiusScale.range([3, 50]);
+//       }
 
-      svg
-        .selectAll('circle')
-        .data(filteredStations, (d) => d.short_name)
-        .attr('r', (d) => radiusScale(d.totalTraffic))
+//       svg
+//         .selectAll('circle')
+//         .data(filteredStations, (d) => d.short_name)
+//         .attr('r', (d) => radiusScale(d.totalTraffic))
+//         .select('title')
+//         .text(
+//           (d) =>
+//             `${d.totalTraffic} trips (${d.departures} departures, ${d.arrivals} arrivals)`
+//         );
+//     }
+function updateScatterPlot(timeFilter) {
+  console.log('Slider changed:', timeFilter);
+
+  const filteredTrips = filterTripsByTime(trips, timeFilter);
+  const filteredStations = computeStationTraffic(stationInfo, filteredTrips);
+
+  if (timeFilter === -1) {
+    radiusScale.range([0, 25]);
+  } else {
+    radiusScale.range([3, 50]);
+  }
+
+  svg
+    .selectAll('circle')
+    .data(filteredStations, (d) => d.short_name)
+    .attr('r', (d) => radiusScale(d.totalTraffic))
+    .each(function (d) {
+      d3.select(this)
         .select('title')
         .text(
-          (d) =>
-            `${d.totalTraffic} trips (${d.departures} departures, ${d.arrivals} arrivals)`
+          `${d.totalTraffic} trips (${d.departures} departures, ${d.arrivals} arrivals)`
         );
-    }
+    });
+}
 
     updatePositions();
 
