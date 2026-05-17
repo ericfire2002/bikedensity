@@ -14,11 +14,3 @@ const map = new mapboxgl.Map({
   minZoom: 5,
   maxZoom: 18,
 });
-
-map.on('load', () => {
-  console.log('Map loaded successfully');
-});
-
-map.on('error', (e) => {
-  console.error('Mapbox error:', e);
-});
