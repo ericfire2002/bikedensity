@@ -15,8 +15,27 @@
 <script src="map.js" type="module"></script>
 </head>
 <body>
+  <header>
     <h1>🚴🏼‍♀️ Bike Watching</h1>
-    <p>Welcome to the Bike Watching app! Here you can find information about bike availability and density in real-time.</p>
+
+    <label>
+      Filter by time:
+      <input
+        id="time-slider"
+        type="range"
+        min="-1"
+        max="1440"
+        value="-1"
+      />
+      <time id="selected-time"></time>
+      <em id="any-time">(any time)</em>
+    </label>
+  </header>
+
+  <p>
+    Welcome to the Bike Watching app! Here you can find information about bike
+    availability and density in real-time.
+  </p>
     <div id="map">
   <svg></svg>
 </div>
