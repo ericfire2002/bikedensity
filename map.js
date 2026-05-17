@@ -21,9 +21,19 @@ const bikeLaneStyle = {
   'line-opacity': 0.6,
 };
 
+// function getCoords(station) {
+//   const point = new mapboxgl.LngLat(+station.lon, +station.lat);
+//   const { x, y } = map.project(point);
+//   return { cx: x, cy: y };
+// }
+
 function getCoords(station) {
-  const point = new mapboxgl.LngLat(+station.lon, +station.lat);
+  const lng = +(station.lon ?? station.Long);
+  const lat = +(station.lat ?? station.Lat);
+
+  const point = new mapboxgl.LngLat(lng, lat);
   const { x, y } = map.project(point);
+
   return { cx: x, cy: y };
 }
 
@@ -89,7 +99,7 @@ const svg = d3.select('#map').select('svg');
     map.on('resize', updatePositions);
     map.on('moveend', updatePositions);
   } catch (error) {
-    console.error('Error loading JSON:', error);
+    console.error('Error loading stations:', error);
   }
 
 
