@@ -103,7 +103,7 @@ const svg = d3.select('#map').select('svg');
     );
 
     stations = stations.map((station) => {
-      const id = station.short_name;
+      const id = station.short_name ?? station.Number;
 
       station.departures = departures.get(id) ?? 0;
       station.arrivals = arrivals.get(id) ?? 0;
