@@ -43,11 +43,15 @@ map.on('load', () => {
   });
 
   map.addLayer({
-    id: 'cambridge-bike-lanes',
-    type: 'line',
-    source: 'cambridge_route',
-    paint: bikeLaneStyle,
-  });
+  id: 'cambridge-bike-lanes',
+  type: 'line',
+  source: 'cambridge_route',
+  paint: {
+    'line-color': 'blue',
+    'line-width': 4,
+    'line-opacity': 0.9,
+  },
+});
 
 });
 
